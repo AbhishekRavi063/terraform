@@ -1,0 +1,55 @@
+type Mutation {
+  # Mutation for creating new business details
+  createBusinessDetails(
+    input: BusinessDetailsInput!
+  ): BusinessDetails
+
+  # Mutation for updating existing business details
+  updateBusinessDetails(
+    businessId: ID!
+    name: String
+    phone: String
+    mail: String
+    services: [String]
+  ): BusinessDetails
+}
+
+# Input type for creating and updating business details
+input BusinessDetailsInput {
+  name: String!
+  phone: String
+  mail: String
+  services: [String]
+}
+
+# Query to fetch the data
+type Query {
+  getBusinessDetails(businessId: ID!): BusinessDetails
+  getCallLog(callId: ID!): CallLog
+}
+
+# strusctures
+
+# BusinessDetails type remains the same
+type BusinessDetails {
+  businessId: ID!
+  name: String
+  phone: String
+  mail: String
+  services: [String]
+}
+
+# CallLog type remains the same
+type CallLog {
+  callId: ID!
+  created: String
+  totalTime: Int
+  processingTime: Int
+  sentiment: String
+  callerNum: String
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}

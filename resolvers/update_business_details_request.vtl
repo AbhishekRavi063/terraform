@@ -1,0 +1,22 @@
+{
+  "version": "2017-02-28",
+  "operation": "UpdateItem",
+  "key": {
+    "businessId": $util.dynamodb.toDynamoDBJson($ctx.args.businessId)
+  },
+  "update": {
+    "expression": "set #name = :name, #phone = :phone, #mail = :mail, #services = :services",
+    "expressionNames": {
+      "#name": "name",
+      "#phone": "phone",
+      "#mail": "mail",
+      "#services": "services"
+    },
+    "expressionValues": {
+      ":name": $util.dynamodb.toDynamoDBJson($ctx.args.name),
+      ":phone": $util.dynamodb.toDynamoDBJson($ctx.args.phone),
+      ":mail": $util.dynamodb.toDynamoDBJson($ctx.args.mail),
+      ":services": $util.dynamodb.toDynamoDBJson($ctx.args.services)
+    }
+  }
+}
