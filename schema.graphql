@@ -53,3 +53,6 @@ schema {
   query: Query
   mutation: Mutation
 }
+
+
+fuck u
